@@ -1,0 +1,31 @@
+{
+  "name": "end-to-end-test-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "e2e": "jest",
+    "server": "cd server && yarn start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/expect-puppeteer": "^5.0.0",
+    "@types/jest-environment-puppeteer": "^5.0.2",
+    "@types/puppeteer": "^5.4.6",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^28.1.1",
+    "jest-puppeteer": "^6.1.0",
+    "puppeteer": "^14.4.0",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3"
+  }
+}

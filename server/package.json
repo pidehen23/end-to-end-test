@@ -1,0 +1,20 @@
+{
+  "name": "mock-auth",
+  "version": "1.0.0",
+  "description": "This is a simple webpage that allows users create temporary accounts and sign in into it. It was written as an example webpage for an end-to-end testing article on Digital Ocean",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/do-community/mock-auth.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/do-community/mock-auth/issues"
+  },
+  "homepage": "https://github.com/do-community/mock-auth#readme"
+}
