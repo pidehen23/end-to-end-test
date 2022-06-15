@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/do-community/mock-auth/issues"
   },
-  "homepage": "https://github.com/do-community/mock-auth#readme"
+  "homepage": "https://github.com/do-community/mock-auth#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
 }
