@@ -15,14 +15,34 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
+      ts: true,
+      tsx: true,
     },
     ecmaVersion: "latest",
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint"],
   ignorePatterns: ["server/**"],
+  settings: {
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      },
+    },
+  },
   rules: {
     semi: ["error", "always"],
     quotes: ["error", "double"],
+    "no-console": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        js: "never",
+        jsx: "never",
+        ts: "never",
+        tsx: "never",
+      },
+    ],
   },
 };
