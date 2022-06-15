@@ -1,6 +1,5 @@
 import { Page } from "puppeteer";
-
-const chalk = require("chalk");
+import chalk from "chalk";
 
 export class LoginAccount {
   url: string;
