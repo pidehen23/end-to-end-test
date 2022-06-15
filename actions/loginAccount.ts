@@ -28,9 +28,8 @@ export class LoginAccount {
 
   async login(username: string, password: string): Promise<string | null> {
     try {
-      await this.page.goto(this.url, { timeout: 120 * 1000 });
+      await this.page.goto(this.url, { timeout: 0 });
       await this.page.waitForSelector(this.loginBtn);
-      // await this.page.click(this.loginBtn);
       await Promise.all([
         this.page.click(this.loginBtn),
         this.page.waitForNavigation(),
@@ -41,11 +40,9 @@ export class LoginAccount {
       // Type the login credentials into the input fields
       await this.page.type(this.usernameField, username);
       await this.page.waitForTimeout(1000);
-
       await this.page.type(this.passwordField, password);
       await this.page.waitForTimeout(1000);
 
-      // await this.page.click(this.loginPageBtn);
       await Promise.all([
         this.page.click(this.loginPageBtn),
         this.page.waitForNavigation(),
@@ -62,7 +59,7 @@ export class LoginAccount {
 
       return firstname;
     } catch (err) {
-      console.log(chalk.red("ERROR => ", err));
+      console.log(chalk.red("ERROR Login Account => ", err));
       return null;
     }
   }

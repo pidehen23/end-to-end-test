@@ -75,7 +75,7 @@ export class CreateAccount {
 
       return firstname;
     } catch (err) {
-      console.log(chalk.red("ERROR => ", err));
+      console.log(chalk.red("ERROR Create Account => ", err));
       return null;
     }
   }

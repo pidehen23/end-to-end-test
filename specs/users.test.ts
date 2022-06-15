@@ -1,25 +1,33 @@
 import credentials, { IUserInfo } from "../utils/credentials";
 import createAccount, { CreateAccount } from "../actions/createAccount";
-import loginAccount, { LoginAccount } from "../actions/loginAccount";
+import loginAccount from "../actions/loginAccount";
 
-jest.setTimeout(1200 * 1000);
+jest.setTimeout(120 * 1000);
 
 describe("Basic authentication e2e tests", () => {
   let credential!: IUserInfo;
   let createInfo!: CreateAccount;
-  let loginInfo!: LoginAccount;
 
   beforeAll(async () => {
-    // Set a definite size for the page viewport so view is consistent across browsers
+    page.setDefaultTimeout(120 * 1000);
     await page.setViewport({
-      width: 1366,
-      height: 768,
+      width: 0,
+      height: 0,
       deviceScaleFactor: 1,
     });
 
     credential = credentials("User");
     createInfo = createAccount(page);
-    loginInfo = loginAccount(page);
+  });
+
+  // disabled by default but remove the 'x' and can configure debug mode globally
+  xit("should put test in debug mode", async () => {
+    await jestPuppeteer.debug();
+  });
+
+  it("should be titled \"Sample Auth Page\"", async () => {
+    await page.goto("http://127.0.0.1:8080/");
+    await expect(page.title()).resolves.toMatch("Sample Auth Page");
   });
 
   it("Should be able to create an account", async () => {
@@ -33,17 +41,20 @@ describe("Basic authentication e2e tests", () => {
   });
 
   it("Should be able to log in after a successful account creation", async () => {
+    const page = await browser.newPage();
+    const loginInfo = loginAccount(page);
     const firstname = await loginInfo.login(
       credential.username,
       credential.password,
     );
     await page.waitForTimeout(1000);
-    console.log(credential.fullname, "====", firstname);
     expect(credential.fullname).toContain(firstname);
+    await page.close();
   });
 
   it("Should not login on wrong credentials", async () => {
     try {
+      const page = await browser.newPage();
       page.on("dialog", (dialog) => {
         expect(dialog.message()).toBe("Invalid username or password inputted");
         dialog.accept();
