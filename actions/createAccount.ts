@@ -38,7 +38,7 @@ export class CreateAccount {
     password: string,
   ): Promise<string | null> {
     try {
-      await this.page.goto(this.url);
+      await this.page.goto(this.url, { timeout: 120 * 1000 });
       await this.page.waitForSelector(this.signupBtn);
       // await this.page.click(this.signupBtn);
       await Promise.all([
@@ -81,6 +81,4 @@ export class CreateAccount {
   }
 }
 
-const func = (page: Page) => new CreateAccount(page);
-
-export default func;
+export default (page: Page) => new CreateAccount(page);

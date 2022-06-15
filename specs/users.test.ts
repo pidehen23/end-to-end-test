@@ -2,7 +2,7 @@ import credentials, { IUserInfo } from "../utils/credentials";
 import createAccount, { CreateAccount } from "../actions/createAccount";
 import loginAccount, { LoginAccount } from "../actions/loginAccount";
 
-jest.setTimeout(60000);
+jest.setTimeout(1200 * 1000);
 
 describe("Basic authentication e2e tests", () => {
   let credential!: IUserInfo;
@@ -38,6 +38,7 @@ describe("Basic authentication e2e tests", () => {
       credential.password,
     );
     await page.waitForTimeout(1000);
+    console.log(credential.fullname, "====", firstname);
     expect(credential.fullname).toContain(firstname);
   });
 
@@ -52,7 +53,8 @@ describe("Basic authentication e2e tests", () => {
       await page.type("#username", "username");
       await page.type("#password", "password");
       await page.click("#loginBtn");
-      await page.waitForTimeout(5000); // Wait for the dialog to accept the prompt before proceeding
+      // Wait for the dialog to accept the prompt before proceeding
+      await page.waitForTimeout(5000);
     } catch (err) {
       console.log("An error occured while trying to login => ", err);
     }

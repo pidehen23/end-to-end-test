@@ -13,6 +13,6 @@ module.exports = {
   // ],
   testMatch: ["**/?(*.)+(spec|test).[t]s"],
   testPathIgnorePatterns: ["/node_modules/", "dist"],
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  // setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   roots: ["specs"],
 };
