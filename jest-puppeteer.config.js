@@ -14,8 +14,8 @@ module.exports = {
     // ignoreHTTPSErrors: true,
   },
   browserContext: "default",
-  // server: {
-  //   command: "node server.js",
-  //   port: 4444,
-  // },
+  server: {
+    command: "npm run server",
+    // port: 4444,
+  },
 };
